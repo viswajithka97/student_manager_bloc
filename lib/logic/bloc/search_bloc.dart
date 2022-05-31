@@ -1,7 +1,8 @@
+// ignore_for_file: depend_on_referenced_packages, unnecessary_type_check
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:meta/meta.dart';
 import 'package:student_manager_bloc/data/db_model.dart';
 import 'package:student_manager_bloc/main.dart';
 

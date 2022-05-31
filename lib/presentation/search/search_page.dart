@@ -1,11 +1,9 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_manager_bloc/logic/bloc/search_bloc.dart';
 import 'package:student_manager_bloc/logic/cubit/studentlist_cubit.dart';
+import 'package:student_manager_bloc/presentation/Detail/detail_screen.dart';
 
 class SearchPage extends StatelessWidget {
   SearchPage({Key? key}) : super(key: key);
@@ -71,8 +69,12 @@ class SearchPage extends StatelessWidget {
                           backgroundImage:
                               FileImage(File(list[index].image.toString())),
                         ),
+                        
                         title: Text(list[index].name),
                         subtitle: Text(list[index].age),
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>ScreenDetails(index: index, list: list)));
+                        },
                       ),
                     ),
                   ),

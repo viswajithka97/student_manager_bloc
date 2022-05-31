@@ -64,7 +64,7 @@ class Home extends StatelessWidget {
                                   context: context,
                                   builder: (ctx) => AlertDialog(
                                         title: Text(
-                                            'Do you want to Delete ${list[index].name}',style: TextStyle(color: Colors.black),),
+                                            'Do you want to Delete ${list[index].name}',style: const TextStyle(color: Colors.black),),
                                         actions: [
                                           Row(
                                             mainAxisAlignment:

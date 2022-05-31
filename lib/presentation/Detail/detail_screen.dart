@@ -4,8 +4,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:student_manager_bloc/core/constrants.dart';
 import 'package:student_manager_bloc/data/db_model.dart';
 import 'package:student_manager_bloc/logic/cubit/studentlist_cubit.dart';
+import 'package:student_manager_bloc/presentation/Detail/widgets/details_content.dart';
 import 'package:student_manager_bloc/presentation/Edit/edit_screen.dart';
 
 class ScreenDetails extends StatelessWidget {
@@ -25,8 +27,9 @@ class ScreenDetails extends StatelessWidget {
               IconButton(
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (ctx1) =>
-                            EditScreen(index: index, list: list)));
+                        builder: (ctx1) => EditScreen(
+                              index: index,
+                            )));
                   },
                   icon: const Icon(Icons.edit))
             ],
@@ -38,59 +41,29 @@ class ScreenDetails extends StatelessWidget {
                 height: 400,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  image: list[index].image.toString().isEmpty
-                      ? const DecorationImage(
-                          image: NetworkImage(
-                              'https://cdn.landesa.org/wp-content/uploads/default-user-image.png'))
-                      : DecorationImage(
-                          image: FileImage(
-                            File(list[index].image.toString()),
-                          ),
-                        ),
+                  image: DecorationImage(
+                    image: FileImage(
+                        File(state.studentList[index].image.toString())),
+                  ),
                 ),
               ),
+              kHeight20,
               DetailScreenContent(
-                  category: 'Name :', result: list[index].name.toString()),
+                  category: 'Name :',
+                  result: state.studentList[index].name.toString()),
               DetailScreenContent(
-                  category: 'Age :', result: list[index].age.toString()),
+                  category: 'Age :',
+                  result: state.studentList[index].age.toString()),
               DetailScreenContent(
-                  category: 'Contact :', result: list[index].phone.toString()),
+                  category: 'Contact :',
+                  result: state.studentList[index].phone.toString()),
               DetailScreenContent(
-                  category: 'Domain :', result: list[index].domain.toString()),
+                  category: 'Domain :',
+                  result: state.studentList[index].domain.toString()),
             ],
           )),
         );
       },
-    );
-  }
-}
-
-class DetailScreenContent extends StatelessWidget {
-  final category;
-  final result;
-  const DetailScreenContent(
-      {Key? key, required this.category, required this.result})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            category,
-            style: const TextStyle(
-              fontSize: 20,
-            ),
-          ),
-          Text(
-            result,
-            style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-          )
-        ],
-      ),
     );
   }
 }

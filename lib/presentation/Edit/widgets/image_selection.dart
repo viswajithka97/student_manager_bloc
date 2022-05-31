@@ -8,9 +8,11 @@ import 'package:image_picker/image_picker.dart';
 import 'package:student_manager_bloc/core/constrants.dart';
 import 'package:student_manager_bloc/logic/cubit/studentlist_cubit.dart';
 
-class ImageSelection extends StatelessWidget {
-  ImageSelection({
-    Key? key,
+class ImageSelectionforEdit extends StatelessWidget {
+  final int index;
+  ImageSelectionforEdit({
+   
+    Key? key,required this.index,
   }) : super(key: key);
   final _picker = ImagePicker();
   @override
@@ -52,11 +54,12 @@ class ImageSelection extends StatelessWidget {
                             kHeight20,
                             GestureDetector(
                               onTap: () async {
+                            
                                 final XFile? img = await _picker.pickImage(
                                     source: ImageSource.gallery);
-
+                                    
                                 context.read<StudentlistCubit>().saveImage(img);
-
+                               
                                 Navigator.of(context);
                               },
                               child: Row(
@@ -73,10 +76,9 @@ class ImageSelection extends StatelessWidget {
                       ));
             },
             child: state.selectedImage == null
-                ?const CircleAvatar(
+                ?  CircleAvatar(
                     radius: 60,
-                    backgroundImage: NetworkImage(
-                        'https://cdn.landesa.org/wp-content/uploads/default-user-image.png'))
+                    backgroundImage: FileImage(File(state.studentList[index].image.toString())))
                 : CircleAvatar(
                     radius: 60,
                     backgroundImage:
