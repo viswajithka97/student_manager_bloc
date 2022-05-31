@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_manager_bloc/core/constrants.dart';
-import 'package:student_manager_bloc/data/db_model.dart';
+import 'package:student_manager_bloc/database/db_model.dart';
 import 'package:student_manager_bloc/logic/cubit/studentlist_cubit.dart';
 import 'package:student_manager_bloc/presentation/Edit/widgets/image_selection.dart';
 import 'package:student_manager_bloc/presentation/widgets/form_field.dart';

@@ -3,7 +3,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:student_manager_bloc/data/db_model.dart';
+import 'package:student_manager_bloc/database/db_model.dart';
 import 'package:student_manager_bloc/main.dart';
 
 part 'studentlist_state.dart';

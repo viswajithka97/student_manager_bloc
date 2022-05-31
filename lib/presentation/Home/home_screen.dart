@@ -1,11 +1,10 @@
 // ignore_for_file: must_be_immutable
 
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_manager_bloc/core/constrants.dart';
-import 'package:student_manager_bloc/data/db_model.dart';
+import 'package:student_manager_bloc/database/db_model.dart';
 import 'package:student_manager_bloc/logic/cubit/studentlist_cubit.dart';
 import 'package:student_manager_bloc/presentation/Add/add_student.dart';
 import 'package:student_manager_bloc/presentation/Detail/detail_screen.dart';
@@ -20,7 +19,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Student List',style: TextStyle(color: Colors.black)),
+        title: const Text('Student List',style: TextStyle(color: Colors.white)),
         actions: [
           IconButton(
               onPressed: () {

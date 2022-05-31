@@ -1,11 +1,8 @@
 // ignore_for_file: use_build_context_synchronously
-
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:student_manager_bloc/core/constrants.dart';
 import 'package:student_manager_bloc/logic/cubit/studentlist_cubit.dart';
 
 class ImageSelection extends StatelessWidget {
@@ -29,8 +26,12 @@ class ImageSelection extends StatelessWidget {
                         width: double.infinity,
                         child: ListView(
                           children: [
-                            kHeight20,
-                            GestureDetector(
+                            ListTile(
+                              leading: const Icon(
+                                Icons.camera,
+                                color: Colors.green,
+                              ),
+                              title: const Text("Camera"),
                               onTap: () async {
                                 final XFile? photo = await _picker.pickImage(
                                     source: ImageSource.camera);
@@ -40,17 +41,13 @@ class ImageSelection extends StatelessWidget {
                                 // print(cameraImage());
                                 Navigator.pop(context);
                               },
-                              child: Row(
-                                children: const [
-                                  kWidth10,
-                                  Icon(Icons.camera),
-                                  kWidth10,
-                                  Text("Camera")
-                                ],
-                              ),
                             ),
-                            kHeight20,
-                            GestureDetector(
+                            ListTile(
+                              leading: const Icon(
+                                Icons.photo,
+                                color: Colors.yellow,
+                              ),
+                              title: const Text("Gallery"),
                               onTap: () async {
                                 final XFile? img = await _picker.pickImage(
                                     source: ImageSource.gallery);
@@ -59,21 +56,13 @@ class ImageSelection extends StatelessWidget {
 
                                 Navigator.of(context);
                               },
-                              child: Row(
-                                children: const [
-                                  kWidth10,
-                                  Icon(Icons.photo),
-                                  kWidth10,
-                                  Text("Gallery")
-                                ],
-                              ),
                             ),
                           ],
                         ),
                       ));
             },
             child: state.selectedImage == null
-                ?const CircleAvatar(
+                ? const CircleAvatar(
                     radius: 60,
                     backgroundImage: NetworkImage(
                         'https://cdn.landesa.org/wp-content/uploads/default-user-image.png'))

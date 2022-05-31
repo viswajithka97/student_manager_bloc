@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:student_manager_bloc/core/constrants.dart';
 import 'package:student_manager_bloc/logic/bloc/search_bloc.dart';
 import 'package:student_manager_bloc/logic/cubit/studentlist_cubit.dart';
 import 'package:student_manager_bloc/presentation/Detail/detail_screen.dart';
@@ -11,9 +12,13 @@ class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Search'),
+      ),
       body: SafeArea(
         child: Column(
           children: [
+            kHeight20,
             BlocBuilder<SearchBloc, SearchState>(
               builder: (context, state) {
                 state as SearchInitial;
@@ -37,9 +42,12 @@ class SearchPage extends StatelessWidget {
                           .add(SearchingEvent(searchedvalues: text));
                     },
                     decoration: InputDecoration(
-                        suffixIcon: const Icon(Icons.search),
-                        suffixIconColor: Colors.black,
+                        suffixIcon: const Icon(
+                          Icons.search,
+                          color: Colors.black,
+                        ),
                         iconColor: Colors.black,
+                        hintText: 'Search',
                         filled: true,
                         fillColor: Colors.white,
                         border: OutlineInputBorder(
@@ -69,20 +77,16 @@ class SearchPage extends StatelessWidget {
                           backgroundImage:
                               FileImage(File(list[index].image.toString())),
                         ),
-                        
                         title: Text(list[index].name),
                         subtitle: Text(list[index].age),
-                        onTap: (){
-                          Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>ScreenDetails(index: index, list: list)));
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (ctx) =>
+                                  ScreenDetails(index: index, list: list)));
                         },
                       ),
                     ),
                   ),
-                //    separatorBuilder: (context, index) {
-                //   return const SizedBox(
-                //     height: 5,
-                //   );
-                // },
                 ));
               },
             ),
