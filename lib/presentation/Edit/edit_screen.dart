@@ -11,8 +11,10 @@ import 'package:student_manager_bloc/presentation/widgets/form_field.dart';
 // ignore: must_be_immutable
 class EditScreen extends StatelessWidget {
   final int index;
-  const EditScreen({Key? key, required this.index,})
-      : super(key: key);
+  const EditScreen({
+    Key? key,
+    required this.index,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

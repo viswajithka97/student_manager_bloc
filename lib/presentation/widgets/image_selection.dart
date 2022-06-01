@@ -18,6 +18,7 @@ class ImageSelection extends StatelessWidget {
         return GestureDetector(
             onTap: () async {
               showModalBottomSheet(
+                isDismissible: true,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30)),
                   context: context,

@@ -65,30 +65,23 @@ class Home extends StatelessWidget {
                                         title: Text(
                                             'Do you want to Delete ${list[index].name}',style: const TextStyle(color: Colors.black),),
                                         actions: [
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
-                                            children: [
-                                              TextButton.icon(
-                                                  onPressed: () {
-                                                    Navigator.pop(context);
-                                                  },
-                                                  icon:
-                                                      const Icon(Icons.cancel,color: Colors.black,),
-                                                  label: const Text('Cancel',style: TextStyle(color: Colors.black))),
-                                              kHeight10,
-                                              TextButton.icon(
-                                                  onPressed: () {
-                                                    context
-                                                        .read<
-                                                            StudentlistCubit>()
-                                                        .deleteStudent(index);
-                                                    Navigator.pop(context);
-                                                  },
-                                                  icon: const Icon(Icons.done,color: Colors.black,),
-                                                  label: const Text('Delete',style: TextStyle(color: Colors.black)))
-                                            ],
-                                          )
+                                          TextButton.icon(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              icon:
+                                                  const Icon(Icons.cancel,color: Colors.black,),
+                                              label: const Text('Cancel',style: TextStyle(color: Colors.black))),
+                                          TextButton.icon(
+                                              onPressed: () {
+                                                context
+                                                    .read<
+                                                        StudentlistCubit>()
+                                                    .deleteStudent(index);
+                                                Navigator.pop(context);
+                                              },
+                                              icon: const Icon(Icons.done,color: Colors.black,),
+                                              label: const Text('Delete',style: TextStyle(color: Colors.black)))
                                         ],
                                       ));
                             },

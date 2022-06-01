@@ -11,6 +11,7 @@ class SearchPage extends StatelessWidget {
   final _searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    context.read<StudentlistCubit>().searchStudentlist();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Search'),

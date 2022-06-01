@@ -34,6 +34,9 @@ class StudentlistCubit extends Cubit<StudentlistState> {
   void searchStudent(List<StudentModel> value) {
     emit(InitialState(studentList: value));
   }
+  void searchStudentlist(){
+    emit(InitialState(studentList: box.values.toList()));
+  }
 
   void editStudent(StudentModel studentDetails, int index) {
     box.putAt(index, studentDetails);
